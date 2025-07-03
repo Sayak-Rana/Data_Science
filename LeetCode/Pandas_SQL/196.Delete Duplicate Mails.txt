@@ -1,0 +1,17 @@
+# Pandas 
+
+import pandas as pd
+
+def delete_duplicate_emails(person: pd.DataFrame) -> None:
+    person.sort_values(by = 'id', ascending = True, inplace = True) # Primary Key doesn't ensure always sorted in ascending order in that case it might keep the higher id if it does appear
+    person.drop_duplicates(subset = 'email', keep = 'first', inplace = True)
+
+# SQL
+
+DELETE FROM Person 
+where id not in
+( SELECT MIN_ID FROM
+    ( SELECT MIN(id) AS MIN_ID, email
+    FROM Person
+    GROUP BY email) as t
+)
