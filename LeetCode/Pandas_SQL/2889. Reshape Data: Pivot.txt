@@ -1,0 +1,22 @@
+# 30 Days of Pandas
+
+# Create a pivot table with aggregation (Pivot Format)
+pivot_table_df = pd.pivot_table(df, index='Date', columns='City', values='Sales', aggfunc='sum')
+print(pivot_table_df)
+
+# CODE
+
+import pandas as pd
+
+def pivotTable(weather: pd.DataFrame) -> pd.DataFrame:
+    df = weather.pivot_table(index = 'month', columns = "city", values = 'temperature')
+    
+    # print("INDEX:")
+    # print(df.index)
+    # print("\nCOLUMNS:")
+    # print(df.columns)
+
+    # df = df.reset_index()
+    # # df.drop(columns='index')
+    # print(df.columns.tolist())
+    return df
